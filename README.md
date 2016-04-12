@@ -1,45 +1,100 @@
 Swift Weather
 ============
+![Language](https://img.shields.io/badge/language-Swift%202-orange.svg)
+![License](https://img.shields.io/github/license/JakeLin/SwiftWeather.svg?style=flat)
 
-SwiftWeather is an iOS weather app developed in Swift language. The app can support iPhone 4(s), iPhone 5(s), iPhone 6 and iPhone 6 Plus. The app also support Today Widgets.
-
-
-## Version 2
-This is version 2. I have ugraded the entire project to use [Carthage](https://github.com/Carthage/Carthage), [Alamofire](https://github.com/Alamofire/Alamofire) and [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON). And the app can only support iOS8+, if you want to support iOS7 or use CocoaPods and AFNetworking. Please have a look at [README.v1.md](https://github.com/JakeLin/SwiftWeather/blob/master/README.v1.md) and Release [Using Cocoapods and AFNetworking](https://github.com/JakeLin/SwiftWeather/releases/tag/V1). Happy coding.
-
-## Screenshots
-![Loading](https://raw.githubusercontent.com/JakeLin/SwiftWeather/master/screenshots/loading-33.png)
-
-![Loading](https://raw.githubusercontent.com/JakeLin/SwiftWeather/master/screenshots/6-Today-smallsize.png)
-
-![Swift Weather](https://raw.githubusercontent.com/JakeLin/SwiftWeather/master/screenshots/6-smallsize.png)
+SwiftWeather is an iOS weather app developed in Swift 2. The app has been actively upgrading to adopt the latest features of iOS and Swift language.
 
 ## Notices
-Because Apple keeps changing the Swift compiler, the current version can be compiled in Xcode 6.2 beta. 
+The current version is working with Xcode Version 7. If you are using different Xcode version, please check out the previous versions. 
+
+## Version 3
+This version has been upgraded to support iOS 9 only using Swift 2.
+
+There are two major version for the app released before.
+
+* V1.0 - Support iOS 7+ using CocoaPods and AFNetworking. [README.v1.md](https://github.com/JakeLin/SwiftWeather/blob/master/README.v1.md) and [Release V1 - Using Cocoapods and AFNetworking](https://github.com/JakeLin/SwiftWeather/releases/tag/V1)
+* V2.0 - Support iOS 8+ using Carthage, Alamofire and SwiftyJSON. [README.v2.md](https://github.com/JakeLin/SwiftWeather/blob/master/README.v2.md) and [Release V2.0](https://github.com/JakeLin/SwiftWeather/releases/tag/v2.0)
+* V2.1 -  Support iOS 8+ using Alamofire and SwiftyJSON. This version has removed Carthage because some developers don't have a paid Apple iOS developer account and they have issues to build Carthage packages.
+
+
+## Screenshots
+
+
+## Features
+* Swift Programming Language - fully upgraded to version 2
+* Design driven development - [Sketch design file ](https://raw.githubusercontent.com/JakeLin/SwiftWeather/master/Design/SwiftWeather.sketch)
+
+![Sketch design](https://raw.githubusercontent.com/JakeLin/SwiftWeather/master/screenshots/SketchDesign.png)
  
-## Used features
-* Swift Programming Language
-* [Carthage](https://github.com/Carthage/Carthage)
-* [Alamofire](https://github.com/Alamofire/Alamofire)
+* Custom UIView
+
+![Custom UIView](https://raw.githubusercontent.com/JakeLin/SwiftWeather/master/screenshots/Custom-UIView.png)
+
+* `@IBDesignable` and `@IBInspectable` - Reusable UI components
+
+![IBDesignable and IBInspectable](https://raw.githubusercontent.com/JakeLin/SwiftWeather/master/screenshots/IBDesignable-IBInspectable.png)
+
+* `UIStackView` 
+
+![UIStackView](https://raw.githubusercontent.com/JakeLin/SwiftWeather/master/screenshots/UIStackView.png)
+ 
+* Size Classes - Support different devices with adpative layout
+
+![Size Classes](https://raw.githubusercontent.com/JakeLin/SwiftWeather/master/screenshots/UIStackView-with-Size-Classes.png)
+
+* MVVM - Reactively update `ViewController` UI from `ViewModel`
+
+* Protocol-Oriented Programming - Still learning though and finding the best practise of that.
+
+* Value based programming - Use imutable value anywhere.
+
+* Icon fonts － Use [Weather Icons](https://erikflowers.github.io/weather-icons/)
+ 
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+
 * Core Location
-* Using Framework to share code between targets(app and widget).
 
-
-## Known issues
-Because we are using [Carthage](https://github.com/Carthage/Carthage) to build the third party packages. There are some build warings like `ld: warning: linking against dylib not safe for use in application extensions: /Build/Products/Debug-iphoneos/Alamofire.framework/Alamofire`
+## TODO
+* App indexing like CoreSpotlight and `NSUserActivity`
+* <s>Unit Tests</s>
+* UI Tests
+* Animations  
 
 ## How to build
-Because the app uses carthage, we need to install carthage. To install the carthage tool on your system, please download and run the Carthage.pkg file for the latest [release](https://github.com/Carthage/Carthage/releases), then follow the on-screen instructions..
 
-1. Open Terminal app.
-2. Change directory to the project folder. `cd $project_dir`
-3. Use `ls` to list all the file to check whether *Cartfile* file is in the folder? 
-4. If the *Cartfile* has been found, then execute `carthage update`.This will fetch dependencies into a Carthage/Checkouts folder, then build each one.
-5. On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop each framework you want to use from the Carthage/Build folder on disk. In our project, which are `Alamofire` and `SwiftyJSON`
-7. Press *Cmd + B* to build the app.
-8. Press *Cmd + R* to run the app on Simulator.
+1) Clone the repository
 
-## Credits
-* Thanks to [johnsonjake](https://github.com/johnsonjake) for adding iOS 8 support and improving the UI/UX.
-* Thanks to [Marc](https://github.com/gizmou) for adding forcast feature, widget and app icon.
+```bash
+$ git clone https://github.com/JakeLin/SwiftWeather.git
+```
+
+2) Install pods
+
+```bash
+$ cd SwiftWeather
+$ pod install
+```
+
+3) Open the workspace in Xcode
+
+```bash
+$ open "SwiftWeather.xcworkspace"
+```
+
+4) Sign up on [openweathermap.org/appid](http://openweathermap.org/appid) to get an appid
+
+```bash
+$ mkdir .access_tokens
+$ echo "your-openweathermap-appid" > .access_tokens/openweathermap
+```
+*Please replace "your-openweathermap-appid" with your actual appid key.*
+ 
+5) Compile and run the app in your simulator
+
+6) If you don't see any data, please check "Simulator" -> "Debug" -> "Location" to change the location.
+
+# Requirements
+
+* Xcode 7
+* iOS 9
